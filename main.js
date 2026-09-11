@@ -83,46 +83,6 @@
   }
 
   /* -----------------------------------------------------------
-     Cursor (two clean circles, desktop only)
-  ----------------------------------------------------------- */
-  function initCursor() {
-    var root = $("[data-cursor-root]");
-    if (!root || !fineHover) return;
-    document.documentElement.classList.add("has-cursor");
-    var ring = $(".cursor-ring", root);
-    var dot = $(".cursor-dot", root);
-    var tx = 0, ty = 0, rx = 0, ry = 0, firstMove = false;
-
-    window.addEventListener("mousemove", function (e) {
-      tx = e.clientX; ty = e.clientY;
-      if (dot) dot.style.transform = "translate3d(" + tx + "px," + ty + "px,0)";
-      if (!firstMove) {
-        firstMove = true; rx = tx; ry = ty;
-        if (ring) ring.style.transform = "translate3d(" + rx + "px," + ry + "px,0)";
-        root.classList.add("is-ready");
-      }
-    }, { passive: true });
-
-    function tick() {
-      rx += (tx - rx) * 0.18; ry += (ty - ry) * 0.18;
-      if (ring) ring.style.transform = "translate3d(" + rx + "px," + ry + "px,0)";
-      requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-
-    var HOVERABLES = "a, button, .show-card, .tier-card, .option-card";
-    document.addEventListener("mouseover", function (e) {
-      if (e.target.closest && e.target.closest(HOVERABLES)) root.classList.add("is-interactive");
-    });
-    document.addEventListener("mouseout", function (e) {
-      var related = e.relatedTarget;
-      if (e.target.closest && e.target.closest(HOVERABLES) && !(related && related.closest && related.closest(HOVERABLES))) {
-        root.classList.remove("is-interactive");
-      }
-    });
-  }
-
-  /* -----------------------------------------------------------
      Magnetic buttons
   ----------------------------------------------------------- */
   function initMagnetic() {
@@ -300,57 +260,6 @@
   }
 
   /* -----------------------------------------------------------
-     Showcase pinned horizontal (desktop only)
-  ----------------------------------------------------------- */
-  function initShowcasePinned() {
-    if (!window.gsap || !window.ScrollTrigger) return;
-    var sec = $(".showcase");
-    var track = $("[data-showcase]");
-    if (!sec || !track) return;
-
-    var setup = function () {
-      ScrollTrigger.getAll().forEach(function (s) { if (s.vars.id === "showcase-pin") s.kill(); });
-      gsap.set(track, { x: 0 });
-      var isDesktop = window.innerWidth >= 1024;
-      sec.classList.toggle("is-pinned", isDesktop);
-      if (!isDesktop) return;
-      var distance = track.scrollWidth - window.innerWidth + 96;
-      if (distance <= 0) return;
-
-      gsap.to(track, {
-        x: function () { return -distance; }, ease: "none",
-        scrollTrigger: {
-          id: "showcase-pin",
-          trigger: sec, start: "top top+=76",
-          end: function () { return "+=" + (distance + window.innerHeight * 0.35); },
-          pin: true, scrub: 0.6, invalidateOnRefresh: true, anticipatePin: 1,
-        },
-      });
-    };
-
-    setup();
-    var to;
-    window.addEventListener("resize", function () {
-      clearTimeout(to);
-      to = setTimeout(function () { ScrollTrigger.refresh(); setup(); }, 250);
-    });
-  }
-
-  /* -----------------------------------------------------------
-     Hero parallax
-  ----------------------------------------------------------- */
-  function initHeroParallax() {
-    if (!window.gsap || !window.ScrollTrigger) return;
-    var bg = $(".hero-bg img");
-    if (bg) {
-      gsap.to(bg, {
-        yPercent: 12, scale: 1.14, ease: "none",
-        scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
-      });
-    }
-  }
-
-  /* -----------------------------------------------------------
      Scroll progress bar
   ----------------------------------------------------------- */
   function initScrollProgress() {
@@ -467,7 +376,6 @@
     safe(initSplash, "initSplash");
     safe(initNav, "initNav");
     safe(initSmoothAnchors, "initSmoothAnchors");
-    safe(initCursor, "initCursor");
     safe(initMagnetic, "initMagnetic");
     safe(initTilt, "initTilt");
     safe(initReveals, "initReveals");
@@ -478,8 +386,6 @@
     if (window.gsap && window.ScrollTrigger) {
       try { gsap.registerPlugin(ScrollTrigger); } catch (_) {}
       safe(initSplitText, "initSplitText");
-      safe(initHeroParallax, "initHeroParallax");
-      safe(initShowcasePinned, "initShowcasePinned");
     } else {
       $$("[data-split]").forEach(function (el) { el.style.opacity = 1; });
     }
