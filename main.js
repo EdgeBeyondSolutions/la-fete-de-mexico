@@ -277,6 +277,50 @@
   }
 
   /* -----------------------------------------------------------
+     Showcase — carrusel continuo (marquee), independiente del
+     scroll de la página. Se pausa al pasar el mouse.
+  ----------------------------------------------------------- */
+  function initShowcaseMarquee() {
+    if (!window.gsap) return;
+    if (!fineHover) return; // en touch se deja el scroll manual nativo
+    var viewport = $("[data-showcase-viewport]");
+    var track = $("[data-showcase]");
+    if (!viewport || !track) return;
+
+    var clone = track.cloneNode(true);
+    clone.removeAttribute("data-showcase");
+    clone.setAttribute("aria-hidden", "true");
+    clone.querySelectorAll("[id]").forEach(function (el) { el.removeAttribute("id"); });
+    viewport.appendChild(clone);
+    viewport.classList.add("has-marquee");
+
+    var gapPx = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || "22") || 22;
+    var tween = null;
+
+    function build() {
+      if (tween) tween.kill();
+      gsap.set([track, clone], { x: 0 });
+      var dist = track.scrollWidth + gapPx;
+      tween = gsap.to([track, clone], {
+        x: -dist, ease: "none", duration: dist / 55, repeat: -1,
+        modifiers: { x: gsap.utils.unitize(function (x) { return parseFloat(x) % dist; }) },
+      });
+    }
+    build();
+
+    viewport.addEventListener("mouseover", function () { if (tween) tween.pause(); });
+    viewport.addEventListener("mouseout", function (e) {
+      if (!viewport.contains(e.relatedTarget) && tween) tween.play();
+    });
+
+    var to;
+    window.addEventListener("resize", function () {
+      clearTimeout(to);
+      to = setTimeout(build, 250);
+    });
+  }
+
+  /* -----------------------------------------------------------
      Lead-capture wizard -> WhatsApp handoff
   ----------------------------------------------------------- */
   function initWizard() {
@@ -382,6 +426,10 @@
     safe(initCountUp, "initCountUp");
     safe(initScrollProgress, "initScrollProgress");
     safe(initWizard, "initWizard");
+
+    if (window.gsap) {
+      safe(initShowcaseMarquee, "initShowcaseMarquee");
+    }
 
     if (window.gsap && window.ScrollTrigger) {
       try { gsap.registerPlugin(ScrollTrigger); } catch (_) {}
