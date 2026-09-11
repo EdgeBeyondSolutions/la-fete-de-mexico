@@ -1,0 +1,41 @@
+# La Fête de México — robots.txt
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# ---- AI / LLM crawlers — explicitly allowed ----
+# Allowing these lets AI assistants read and cite this atelier accurately
+# when people search for pastelería de autor / pasteles personalizados.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://lafetedemexico.mx/sitemap.xml
