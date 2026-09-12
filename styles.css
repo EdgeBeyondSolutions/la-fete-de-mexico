@@ -70,9 +70,10 @@ img { height: auto; }
 .site-video-bg video { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; }
 .site-video-bg::before {
   content: ""; position: absolute; inset: 0;
+  /* Ligero — el video debe leerse claro en todo el sitio, no solo insinuarse */
   background:
-    linear-gradient(180deg, rgba(21,15,12,.62) 0%, rgba(21,15,12,.4) 30%, rgba(21,15,12,.55) 70%, rgba(21,15,12,.85) 100%),
-    linear-gradient(90deg, rgba(21,15,12,.35), transparent 40%, transparent 60%, rgba(21,15,12,.35));
+    linear-gradient(180deg, rgba(21,15,12,.3) 0%, rgba(21,15,12,.16) 30%, rgba(21,15,12,.22) 70%, rgba(21,15,12,.45) 100%),
+    linear-gradient(90deg, rgba(21,15,12,.16), transparent 40%, transparent 60%, rgba(21,15,12,.16));
 }
 @media (prefers-reduced-motion: reduce) {
   .site-video-bg video { display: none; }
@@ -252,14 +253,13 @@ img.ambient-on { animation: ambientZoom 30s ease-in-out infinite; }
    6. Hero
    ============================================================= */
 .hero {
-  position: relative; min-height: 100svh; display: flex; align-items: flex-end;
+  position: relative; min-height: 100svh; display: flex; align-items: center;
   overflow: clip; isolation: isolate;
 }
 .hero-scrim {
   position: absolute; inset: 0; z-index: -1;
-  background:
-    linear-gradient(180deg, rgba(21,15,12,.3) 0%, rgba(21,15,12,.2) 40%, rgba(21,15,12,.75) 92%, var(--bg) 100%),
-    linear-gradient(90deg, rgba(21,15,12,.5) 0%, rgba(21,15,12,.1) 55%);
+  /* Ligero y parejo — el video debe leerse claro, el texto se apoya en su halo */
+  background: rgba(21,15,12,.22);
 }
 .hero-mesh {
   position: absolute; inset: 0; z-index: -1; pointer-events: none;
@@ -270,7 +270,7 @@ img.ambient-on { animation: ambientZoom 30s ease-in-out infinite; }
     radial-gradient(55% 45% at var(--mesh-x) var(--mesh-y), rgba(196,101,79,.4), transparent 62%),
     conic-gradient(from var(--mesh-angle), rgba(201,164,106,.18), rgba(196,101,79,.22), rgba(155,75,57,.1), rgba(201,164,106,.18));
   filter: blur(90px) saturate(120%);
-  opacity: .8;
+  opacity: .45;
   animation: meshShift 24s linear infinite;
   mix-blend-mode: screen;
 }
@@ -280,11 +280,11 @@ img.ambient-on { animation: ambientZoom 30s ease-in-out infinite; }
   100% { --mesh-angle: 360deg; --mesh-x: 25%; --mesh-y: 30%; }
 }
 
-.hero-inner { position: relative; padding-block: 8rem 4.5rem; width: 100%; }
+.hero-inner { position: relative; padding-block: 6rem 2rem; width: 100%; }
 .hero-meta { display: inline-flex; align-items: center; gap: .55rem; font-size: .8rem; letter-spacing: .04em; color: var(--cream-2); margin-bottom: 1.6rem; }
 .hero-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(196,101,79,.25); }
 .hero-glyph { display: block; font-size: 1.8rem; color: var(--gold); margin-bottom: .8rem; }
-.hero-title { font-size: clamp(2.6rem, 6.6vw, 5.4rem); max-width: 22ch; margin-bottom: 1.6rem; }
+.hero-title { font-size: clamp(2.6rem, 6.6vw, 5.4rem); max-width: 22ch; margin-bottom: 2.6rem; }
 .hero-title em { font-style: italic; color: var(--accent); font-weight: 400; }
 .hero-sub { max-width: 46ch; font-size: clamp(1.02rem, 1.6vw, 1.2rem); color: var(--cream-2); margin-bottom: 2.4rem; }
 .hero-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1.8rem 2.6rem; }
@@ -384,9 +384,9 @@ img.ambient-on { animation: ambientZoom 30s ease-in-out infinite; }
 .proceso h2 { font-size: clamp(1.7rem, 3.4vw, 2.6rem); max-width: 22ch; margin-bottom: 3.2rem; }
 .proceso-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.2rem; }
 .proceso-step { border-top: 1px solid var(--line); padding-top: 1.4rem; }
-.proceso-n { font-family: var(--serif); font-style: italic; font-size: 2rem; color: var(--accent); display: block; margin-bottom: .6rem; }
-.proceso-step h3 { font-size: 1.2rem; margin-bottom: .5rem; }
-.proceso-step p { color: var(--cream-3); font-size: .92rem; }
+.proceso-n { font-family: var(--serif); font-style: italic; font-size: 2.3rem; color: var(--accent); display: block; margin-bottom: .7rem; }
+.proceso-step h3 { font-size: 1.4rem; margin-bottom: .6rem; }
+.proceso-step p { color: var(--cream-2); font-size: 1.05rem; line-height: 1.6; }
 @media (min-width: 720px) { .proceso-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1280px) { .proceso-grid { grid-template-columns: repeat(4, 1fr); } }
 
@@ -454,8 +454,9 @@ img.ambient-on { animation: ambientZoom 30s ease-in-out infinite; }
    13. Diseña — wizard form
    ============================================================= */
 .disena { padding-block: 7rem; }
+.disena-top { padding-top: 9rem; }
 .disena-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3rem; }
-.disena-copy h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); margin-bottom: 1.2rem; }
+.disena-copy h2, .disena-title { font-size: clamp(1.7rem, 3.2vw, 2.4rem); margin-bottom: 1.2rem; }
 .disena-copy p { color: var(--cream-2); max-width: 46ch; margin-bottom: 1.6rem; }
 .disena-points { display: grid; gap: .8rem; }
 .disena-points li { position: relative; padding-left: 1.5rem; color: var(--cream-3); font-size: .92rem; }
@@ -575,9 +576,6 @@ img.ambient-on { animation: ambientZoom 30s ease-in-out infinite; }
    ============================================================= */
 @media (min-width: 540px) {
   .option-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (min-width: 720px) {
-  .hero-inner { padding-block: 10rem 6rem; }
 }
 @media (min-width: 960px) {
   .disena-copy { padding-top: 1rem; }

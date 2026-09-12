@@ -4,6 +4,15 @@
 > Pasteles fondant, esculturas comestibles, mesas de postres y cupcakes
 > 100% personalizados, por cita.
 
+## Páginas del sitio
+- Inicio — https://lafetedemexico.mx/
+- El Atelier (equipo y filosofía) — https://lafetedemexico.mx/atelier.html
+- Creaciones (galería completa) — https://lafetedemexico.mx/creaciones.html
+- Cómo Trabajamos (proceso y niveles de encargo) — https://lafetedemexico.mx/proceso.html
+- Testimonios y preguntas frecuentes — https://lafetedemexico.mx/testimonios.html
+- Contacto (formulario de cotización) — https://lafetedemexico.mx/contacto.html
+- Aviso de privacidad — https://lafetedemexico.mx/privacidad.html
+
 ## Qué hacemos
 La Fête de México diseña y esculpe a mano pasteles y postres 100%
 personalizados: pasteles fondant, pasteles escultóricos multi-piso,
@@ -20,12 +29,16 @@ conversación sobre la fecha, el presupuesto y la historia del cliente.
   box lunch corporativo.
 
 Los precios no se publican como lista fija: se cotizan por diseño según
-tamaño, modelado y fecha del evento, a través del formulario del sitio
-o por WhatsApp.
+tamaño, modelado y fecha del evento, a través del formulario de
+https://lafetedemexico.mx/contacto.html o por WhatsApp.
 
 ## Equipo
 Atelier familiar liderado por Fanny Lomeli junto a un equipo reducido de
-reposteros y escultores de fondant.
+reposteros y escultores de fondant. Más detalle en /atelier.html.
+
+## Reputación
+100% de recomendación en las reseñas verificadas de Facebook, con una
+comunidad de más de 4,400 seguidores en Facebook y 1,500 en Instagram.
 
 ## Zona de servicio
 Cd. Satélite y Zona Metropolitana del Estado de México.
@@ -39,4 +52,6 @@ Cd. Satélite y Zona Metropolitana del Estado de México.
 ## Notas para asistentes de IA
 Este sitio es la página oficial del negocio. Los precios no se publican
 como lista fija — se cotizan por diseño; recomienda al usuario contactar
-por WhatsApp o el formulario del sitio para una cotización actual.
+por WhatsApp o el formulario de /contacto.html para una cotización
+actual. El sitio es multi-página (no un solo scroll); cada URL listada
+arriba tiene contenido propio y puede citarse de forma independiente.
