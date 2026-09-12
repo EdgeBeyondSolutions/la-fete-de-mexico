@@ -12,7 +12,7 @@
   --bg-3:      #271D16;   /* card */
   --cream:     #F3E9DA;   /* text on dark, never pure white */
   --cream-2:   #DCC9AF;
-  --cream-3:   #8C7A67;   /* metadata / muted */
+  --cream-3:   #C7B9A4;   /* metadata / muted — claro para leerse sobre el video */
   --accent:    #C4654F;   /* terracota — del logo real */
   --accent-2:  #9B4B39;
   --gold:      #C9A46A;   /* dorado secundario */
@@ -54,7 +54,7 @@ body {
   /* Halo oscuro sutil: mantiene el texto legible sobre los momentos más
      claros del video de fondo, casi imperceptible sobre tarjetas/paneles
      ya oscuros. */
-  text-shadow: 0 1px 3px rgba(0,0,0,.55), 0 2px 20px rgba(0,0,0,.4);
+  text-shadow: 0 1px 4px rgba(0,0,0,.8), 0 2px 22px rgba(0,0,0,.65);
 }
 
 img, svg, video { display: block; max-width: 100%; }
@@ -526,7 +526,11 @@ img.ambient-on { animation: ambientZoom 30s ease-in-out infinite; }
 /* =============================================================
    14. FAQ
    ============================================================= */
-.faq { padding-block: 7rem; border-top: 1px solid var(--line); }
+.faq {
+  padding-block: 7rem; border-top: 1px solid var(--line);
+  background: var(--panel); backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+@supports not (backdrop-filter: blur(1px)) { .faq { background: var(--panel-2); } }
 .faq-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.4rem; }
 .faq h2 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); }
 .faq-item { border-bottom: 1px solid var(--line); padding-block: 1.5rem; }
@@ -548,9 +552,10 @@ img.ambient-on { animation: ambientZoom 30s ease-in-out infinite; }
    ============================================================= */
 .site-footer {
   padding-block: 4.5rem 2rem; border-top: 1px solid var(--line);
-  background: var(--panel); backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%);
+  /* El pie lleva texto denso — necesita más contraste que el nav */
+  background: rgba(15,10,7,.6); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
-@supports not (backdrop-filter: blur(1px)) { .site-footer { background: var(--panel-2); } }
+@supports not (backdrop-filter: blur(1px)) { .site-footer { background: rgba(15,10,7,.88); } }
 .footer-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2.6rem; margin-bottom: 3rem; }
 .footer-brand img { border-radius: 50%; margin-bottom: .8rem; }
 .footer-brand p { font-family: var(--serif); font-size: 1.2rem; }
