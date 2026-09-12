@@ -410,13 +410,30 @@ img.ambient-on { animation: ambientZoom 30s ease-in-out infinite; }
    ============================================================= */
 .testimonios { position: relative; padding-block: 7rem; overflow: clip; isolation: isolate; }
 .testimonios-mesh { position: absolute; inset: 0; z-index: -1; }
-.testimonios-inner { max-width: 780px; text-align: center; margin-inline: auto; }
-.testimonio-quote { position: relative; margin-bottom: 3rem; }
-.quote-mark { font-family: var(--serif); font-style: italic; font-size: 5rem; color: var(--accent); line-height: 0; display: block; margin-bottom: 1rem; }
-.testimonio-quote p { font-family: var(--serif); font-size: clamp(1.35rem, 2.6vw, 1.9rem); font-weight: 400; line-height: 1.4; color: var(--cream); margin-bottom: 1.6rem; }
-.testimonio-quote footer strong { display: block; font-size: 1rem; }
-.testimonio-quote footer span { color: var(--cream-3); font-size: .85rem; }
-.testimonios-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 2.6rem; }
+.testimonios-inner { text-align: center; }
+.testimonios-head { max-width: 640px; margin-inline: auto; margin-bottom: 3rem; }
+
+/* Carrusel continuo de reseñas — texto pequeño, se mueve solo, se pausa al hover */
+.testi-viewport { position: relative; margin-bottom: 3.2rem; }
+.testi-viewport.has-marquee { overflow: hidden; display: flex; }
+.testi-track { display: flex; gap: 1.2rem; padding-inline: 1.4rem; }
+.testi-viewport.has-marquee .testi-track { flex: 0 0 auto; }
+@media (min-width: 720px) { .testi-track { padding-inline: 2.4rem; } }
+
+.testi-card {
+  flex: 0 0 auto; width: min(340px, 82vw); text-align: left;
+  background: var(--card);
+  backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid var(--line); border-radius: 16px;
+  padding: 1.6rem 1.5rem;
+}
+@supports not (backdrop-filter: blur(1px)) { .testi-card { background: var(--panel-2); } }
+.testi-card .quote-mark { font-family: var(--serif); font-style: italic; font-size: 2.2rem; color: var(--accent); line-height: 0; display: block; margin-bottom: .7rem; }
+.testi-card p { font-size: .92rem; line-height: 1.55; color: var(--cream); margin-bottom: 1.1rem; }
+.testi-card footer strong { display: block; font-size: .88rem; }
+.testi-card footer span { color: var(--cream-3); font-size: .78rem; }
+
+.testimonios-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 2.6rem; margin-bottom: 1.4rem; }
 .badge { text-align: center; }
 .badge strong { display: block; font-family: var(--serif); font-style: italic; color: var(--gold); font-size: 1.7rem; }
 .badge span { color: var(--cream-3); font-size: .82rem; }

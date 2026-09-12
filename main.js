@@ -277,18 +277,18 @@
   }
 
   /* -----------------------------------------------------------
-     Showcase — carrusel continuo (marquee), independiente del
+     Carrusel continuo genérico (marquee), independiente del
      scroll de la página. Se pausa al pasar el mouse.
   ----------------------------------------------------------- */
-  function initShowcaseMarquee() {
+  function initMarquee(viewportAttr, trackAttr, speed) {
     if (!window.gsap) return;
     if (!fineHover) return; // en touch se deja el scroll manual nativo
-    var viewport = $("[data-showcase-viewport]");
-    var track = $("[data-showcase]");
+    var viewport = $("[" + viewportAttr + "]");
+    var track = $("[" + trackAttr + "]");
     if (!viewport || !track) return;
 
     var clone = track.cloneNode(true);
-    clone.removeAttribute("data-showcase");
+    clone.removeAttribute(trackAttr);
     clone.setAttribute("aria-hidden", "true");
     clone.querySelectorAll("[id]").forEach(function (el) { el.removeAttribute("id"); });
     viewport.appendChild(clone);
@@ -302,7 +302,7 @@
       gsap.set([track, clone], { x: 0 });
       var dist = track.scrollWidth + gapPx;
       tween = gsap.to([track, clone], {
-        x: -dist, ease: "none", duration: dist / 55, repeat: -1,
+        x: -dist, ease: "none", duration: dist / (speed || 55), repeat: -1,
         modifiers: { x: gsap.utils.unitize(function (x) { return parseFloat(x) % dist; }) },
       });
     }
@@ -428,7 +428,8 @@
     safe(initWizard, "initWizard");
 
     if (window.gsap) {
-      safe(initShowcaseMarquee, "initShowcaseMarquee");
+      safe(function () { initMarquee("data-showcase-viewport", "data-showcase", 55); }, "initMarquee:showcase");
+      safe(function () { initMarquee("data-testi-viewport", "data-testi-track", 40); }, "initMarquee:testi");
     }
 
     if (window.gsap && window.ScrollTrigger) {

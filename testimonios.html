@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Sora:wght@300;400;500;600;700&display=swap" />
 
-<link rel="stylesheet" href="styles.css?v=20260919" />
+<link rel="stylesheet" href="styles.css?v=20260920" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -43,9 +43,17 @@
   "url": "https://lafetedemexico.mx/",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Ciudad Satélite",
+    "streetAddress": "C. Arboledas 11, Hab Plaza de la Colina",
+    "addressLocality": "Tlalnepantla",
     "addressRegion": "Estado de México",
+    "postalCode": "54080",
     "addressCountry": "MX"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "66",
+    "bestRating": "5"
   },
   "servesCuisine": "Pastelería de autor",
   "priceRange": "$$",
@@ -167,16 +175,42 @@
   <section class="testimonios">
     <div class="section-with-mesh testimonios-mesh" aria-hidden="true"></div>
     <div class="container testimonios-inner">
-      <blockquote class="testimonio-quote reveal" data-reveal>
-        <span class="quote-mark" aria-hidden="true">&ldquo;</span>
-        <p>Ya no vivo en Estado de México, pero tuve oportunidad de realizar un pedido con usted y la verdad quedé encantada con el servicio y la calidad del producto. 10/10.</p>
-        <footer><strong>Alejandra Espinoza</strong><span>Reseña verificada en Facebook</span></footer>
-      </blockquote>
+      <div class="testimonios-head">
+        <p class="kicker reveal" data-reveal>Testimonios</p>
+        <h2 class="reveal" data-split="words">4.9 estrellas, reseña por reseña.</h2>
+      </div>
+
+      <div class="testi-viewport" data-testi-viewport>
+        <div class="testi-track" data-testi-track>
+          <article class="testi-card">
+            <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+            <p>Ya no vivo en Estado de México, pero tuve oportunidad de realizar un pedido con usted y la verdad quedé encantada con el servicio y la calidad del producto. 10/10.</p>
+            <footer><strong>Alejandra Espinoza</strong><span>Reseña verificada en Facebook</span></footer>
+          </article>
+          <article class="testi-card">
+            <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+            <p>Es un lugar mágico donde realizan tu imaginación y tus sueños y te lo entregan hecho pastel, con el colorido, aroma, apariencia y sabor de la mejor calidad.</p>
+            <footer><strong>Medrano Delgado</strong><span>Reseña verificada en Google</span></footer>
+          </article>
+          <article class="testi-card">
+            <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+            <p>Tuve mis dudas al pagar el anticipo por transferencia, pero llegado el día me entregaron a tiempo y exactamente lo que pedí.</p>
+            <footer><strong>Isabel Ramírez</strong><span>Local Guide · Google</span></footer>
+          </article>
+          <article class="testi-card">
+            <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+            <p>Excelente presentación, increíble diseño y deliciosos mis cupcakes — los amé, y el festejado no se los quería comer de tan lindos que estaban.</p>
+            <footer><strong>Kn Flores</strong><span>Reseña verificada en Google</span></footer>
+          </article>
+        </div>
+      </div>
+
       <div class="testimonios-badges">
+        <div class="badge reveal" data-reveal><strong>4.9★</strong><span>en Google · 66 reseñas</span></div>
         <div class="badge reveal" data-reveal><strong>100%</strong><span>recomendación en Facebook</span></div>
         <div class="badge reveal" data-reveal><strong>4.4K</strong><span>seguidores en Facebook</span></div>
-        <div class="badge reveal" data-reveal><strong>1.5K</strong><span>comunidad en Instagram</span></div>
       </div>
+      <a class="link-arrow reveal" data-reveal href="https://www.google.com/maps/place/La+Fete+de+M%C3%A9xico+-+Pasteler%C3%ADa+CupCakes/@19.5201051,-99.2269568,17z/data=!3m1!4b1!4m6!3m5!1s0x85d203bbbad58bcb:0xf8cd6c4f7bc4bc82!8m2!3d19.5201051!4d-99.2269568!16s%2Fg%2F11ghpv64vh" target="_blank" rel="noopener">Ver las 66 reseñas en Google →</a>
     </div>
   </section>
   <!-- FAQ -->
@@ -249,6 +283,6 @@
 <script defer src="lib/gsap.min.js"></script>
 <script defer src="lib/ScrollTrigger.min.js"></script>
 <script defer src="lib/manifest.js"></script>
-<script defer src="main.js?v=20260919"></script>
+<script defer src="main.js?v=20260920"></script>
 </body>
 </html>
